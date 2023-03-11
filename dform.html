@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Expense Tracker</h2>
+
+    <form method="post" action="submit.php">
+        <label for="edate">Date:</label>
+        <input type="date" name="edate" required>
+
+        <label for="eitem">Item:</label>
+        <input type="text" name="eitem" required>
+
+        <label for="eamount">Amount:</label>
+        <input type="number" step="0.01" name="eamount" required>
+
+        <label for="etype">Type:</label>
+        <select name="etype" required>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+
+        <button type="submit">Add Entry</button>
+    </form>
+
+    <br>
+
+    <h3>Expense Report</h3>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Action</th>
+        </tr>
+        <?php foreach ($entries as $entry) { ?>
+            <tr>
+                <td><?php echo $entry['edate']; ?></td>
+                <td><?php echo $entry['eitem']; ?></td>
+                <td><?php echo $entry['eamount']; ?></td>
+                <td><?php echo $entry['etype']; ?></td>
+                <td>
+                    <form method="post" action="submit.php">
+                        <input type="hidden" name="id" value="<?php echo $entry['id']; ?>">
+                        <button type="submit" name="delete">Delete</button>
+                    </form>
+                    <form method="post" action="update.php">
+                        <input type="hidden" name="id" value="<?php echo $entry['id']; ?>">
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+            </tr>
+        <?php } ?>
+    </table>
+</body>
+</html>
