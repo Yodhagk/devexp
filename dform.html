@@ -5,7 +5,8 @@
     <style>
         table {
             border-collapse: collapse;
-            width: 100%;
+            align-items: center;
+            width: 50%;
         }
 
         th, td {
@@ -22,22 +23,35 @@
     <h2>Expense Tracker</h2>
 
     <form method="post" action="submit.php">
-        <label for="edate">Date:</label>
-        <input type="date" name="edate" required>
 
-        <label for="eitem">Item:</label>
-        <input type="text" name="eitem" required>
+        <table border="1">
+            <tr>
+                <td><label for="edate">Cno</label></td>
+                   <td> <input type="number" name="e" required></td> 
+           </tr>
+            <tr>
+                 <td><label for="edate">Date:</label></td>
+                    <td> <input type="date" name="edate" required></td> 
+            </tr>
+       <tr>
+             
+        <td><label for="eitem">Item:</label></td>
+       <td> <input type="text" name="eitem" required></td>
+    </tr>
 
-        <label for="eamount">Amount:</label>
-        <input type="number" step="0.01" name="eamount" required>
+        <tr>
+            <td><label for="eamount">Amount:</label></td>
+        <td><input type="number" step="0.01" name="eamount" required></td>
+    </tr>
 
-        <label for="etype">Type:</label>
-        <select name="etype" required>
+        <tr><td><label for="etype">Type:</label></td>
+        <td><select name="etype" required>
             <option value="income">Income</option>
-            <option value="expense">Expense</option>
-        </select>
+            <option value="expense">Expense</option></td>
+        </select></tr>
 
-        <button type="submit">Add Entry</button>
+        <tr><td   colspan="2"> <button type="submit">Add Entry</button></td></tr>
+    </table>
     </form>
 
     <br>
